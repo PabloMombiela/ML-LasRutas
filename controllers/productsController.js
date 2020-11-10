@@ -35,13 +35,18 @@ const controller = {
     // Create -  Method to store
     store: (req, res) => {
 
+        // Guardo el nombre de la imagen
+        var filename = req.files.map(function(file) {
+            return file.filename.toString();
+        });
         let producto = { //recupero los datos del form//
             id: products.length + 1,
             name: req.body.name,
             price: req.body.price,
             discount: req.body.discount,
             category: req.body.category,
-            description: req.body.description
+            description: req.body.description,
+            image: filename
         };
 
         // products.id = products.length + 1 // Esta linea pone el atributo ID en el producto que creamos, si no lo hacemos se suma al json sin el atributo id, y la vista DETAIL nunca los mostraria//
@@ -67,19 +72,12 @@ const controller = {
 
     },
     // Update - Method to update // Envia producto actualizado
-    update: (req, res) => {
+    update: (req, res, next) => {
 
-
-        //const filePath = './data/productsDataBase.json';
-
-        // Pasamos el contenido de productsDataBase.json a una variable
-        //let content = fs.readFileSync(filePath, { encoding: 'utf-8' });
-
-        // Convertimos en un array para poder operar
-        //content = JSON.parse(content);
-
-
-
+        // Guardo el nombre de la imagen
+        var filename = req.files.map(function(file) {
+            return file.filename.toString();
+        });
         // recupero los datos del form//
         products.forEach(function(element) {
             if (element.id == req.params.id) {
@@ -89,7 +87,7 @@ const controller = {
                 element.discount = req.body.discount;
                 element.category = req.body.category;
                 element.description = req.body.description;
-                //element.image = filename;
+                element.image = filename;
             }
         });
         // los empaqueto en un JSON
