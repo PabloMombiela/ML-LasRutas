@@ -12,7 +12,7 @@ const controller = {
 
     // Root - Show all products
     index: (req, res) => {
-        res.render('products', { products: products }) // renderiza LA RUTA; PERO FALTAN LOS PRODUCTOS
+        res.render('products', { products: products, toThousand, formatPrice }) // renderiza LA RUTA; PERO FALTAN LOS PRODUCTOS
     },
 
     // Detail - Detail from one product

@@ -33,21 +33,22 @@
                                 <h2 class="product-detail-title">
                                     <%=producto.name%>
                                 </h2>
-
+                                <% if (producto.discount > 0) { %>
                                 <p class="product-detail-price small">
-                                    <span><%=toThousand(producto.price)%></span> /
-                                    <b><%=producto.discount%>% Off</b>
+                                    <span>$<%=toThousand(producto.price)%></span> /
+                                    <b><%=producto.discount%>% OFF</b>
                                 </p>
                                 <p class="product-detail-price">
-                                    Precio Final $
+                                     $
                                     <%=formatPrice(producto.price,producto.discount)%>
                                 </p>
+                                <% } else { %>
                                 <p class="product-detail-price">
-                                    Precio $
+                                    $
                                     <%=toThousand(producto.price)%>
 
                                 </p>
-
+                                <% }; %>
                                 <ul class="actions-list">
                                     <li>
                                         <i class="fas fa-credit-card"></i>

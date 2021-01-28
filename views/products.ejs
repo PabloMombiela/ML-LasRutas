@@ -24,14 +24,12 @@
                                         <img src="/images/products/<%=product.image%>" alt="imagen de producto">
                                     </figure>
                                     <article class="product-box_data">
-                                        <h2>FINAL PRICE $
-                                            <%= product.price%>
-                                                <h2>
-                                                    <span>DISCOUNT% <%= product.discount%></span>
-                                                    <p>
-                                                        <%= product.name%>
-                                                    </p>
-                                                    <i class="fas fa-truck"></i>
+                                        <h2>$<%= toThousand(product.price) %></h2>
+                                        <% if (product.discount > 0) { %>
+                                        <span><%= product.discount %>% OFF</span>
+                                        <% } %>
+                                        <p><%= product.name %></p>
+                                        <i class="fas fa-truck"></i>
                                     </article>
                                 </a>
 
